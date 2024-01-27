@@ -1,31 +1,57 @@
-import React, { useContext } from "react";
-import CricketContext from "../context/CricketContext";
+import React, { useContext, useEffect, useState } from "react";
+import StyleContext from "../context/styleContext";
 
-const Hello = () => {
-  const obj = useContext(CricketContext);
-  const { cricketer, setCricketer } = obj;
-  const { name, age, country, role, retire } = cricketer;
+export const Hello = (props) => {
+  const { theme, darkTheme, lightTheme } = useContext(StyleContext);
+  const [isDark, setIsDark] = useState(false);
 
-  //   console.log(name, age, country, role, retire);
+  //false = light
+  //true = dark
+
+  useEffect(() => {
+    let currentTheme = localStorage.getItem("isDark");
+    if (currentTheme === "true") {
+      setIsDark(true);
+      darkTheme();
+    } else if (currentTheme === "false") {
+      setIsDark(false);
+      lightTheme();
+    }
+  }, []);
+
+  const switchTheme = () => {
+    if (isDark) {
+      lightTheme();
+    } else {
+      darkTheme();
+    }
+    let currentTheme = !isDark;
+    localStorage.setItem("isDark", currentTheme);
+    setIsDark(!isDark);
+  };
 
   return (
     <div>
-      <h1>Hello {cricketer.name}</h1>
-      {/* {show each value inside crickter inside a p tag} */}
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
-      <p>Country: {country}</p>
-      <p>Role: {role}</p>
-      <p>Retire: {retire ? "Yes" : "No"}</p>
+      <div>
+        <h1>Hello</h1>
+        <p>
+          dbas safkj jsajfnjdasf fsadjfdasf bsdfb dbb asdjfjkdsaf sdfbadsbfkasf
+          dfbd jsabdf jabsdfbds jbsdb sbsbjbd sj fsjbfs a abfsbfs fbsjf s jsbfbs
+          fsjfbsf qk sbfksf a sfks fsfbksf fwbfbskfksnf sf fsbf cnalsf asfa f
+        </p>
 
-      {/* create a button to update age by 1 */}
-      <button onClick={() => setCricketer({ ...cricketer, age: age + 1 })}>
-        Update age
-      </button>
-
-      <hr />
+        <ul>
+          <li>Dummy</li>
+          <li>Dummy</li>
+          <li>Dummy</li>
+          <li>Dummy</li>
+          <li>Dummy</li>
+        </ul>
+      </div>
+      {/* <button onClick={darkTheme}>Switch to Dark</button>
+      <button onClick={lightTheme}>Switch to Light</button> */}
+      <button onClick={switchTheme}>Switch Theme</button>
     </div>
   );
 };
-
 export default Hello;

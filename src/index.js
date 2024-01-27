@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import CricketProvider from "./context/CricketProvider";
+import StyleProvider from "./context/StyleProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <CricketProvider>
+  <StyleProvider>
     <App />
-  </CricketProvider>
+  </StyleProvider>
 );

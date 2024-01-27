@@ -1,18 +1,19 @@
+import React, { useContext } from "react";
 import "./App.css";
 import Hello from "./Components/Hello";
-import Hii from "./Components/Hii";
-// import CricketProvider from "./context/CricketProvider";
+import StyleContext from "./context/styleContext";
+
 function App() {
+  const { theme, darkTheme, lightTheme } = useContext(StyleContext);
+
   return (
-    <div className="App">
-      {/* <CricketProvider>
-        <Hello />
-        <hr />
-        <Hii />
-      </CricketProvider> */}
-      <Hello />
-      <hr />
-      <Hii />
+    <div
+      style={{
+        color: theme.color,
+        backgroundColor: theme.backgroundColor,
+        border: theme.border,
+      }}>
+      <Hello></Hello>
     </div>
   );
 }
