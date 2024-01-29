@@ -45,11 +45,8 @@ export const Hello = (props) => {
           <li>Dummy</li>
           <li>Dummy</li>
           <li>Dummy</li>
-          <li>Dummy</li>
         </ul>
       </div>
-      {/* <button onClick={darkTheme}>Switch to Dark</button>
-      <button onClick={lightTheme}>Switch to Light</button> */}
       <button onClick={switchTheme}>Switch Theme</button>
     </div>
   );
